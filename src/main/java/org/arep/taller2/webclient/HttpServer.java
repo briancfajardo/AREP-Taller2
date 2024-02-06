@@ -144,6 +144,14 @@ public class HttpServer {
                 "</div>\n";
     }
 
+    /**
+     * Método que convierte una imágen en bytes  y la envía al cliente
+     * @param clientSocket Es el socket de la sesión
+     * @param filePath Es el path del archivo
+     * @param fileType Es el tipo del archivo ej. png y jpg
+     * @param header Es el encabezado de la petición http
+     * @throws IOException se lanza cuando no encuentra el archivo o no puede establecer la conexión
+     */
     public static void sendResponseImg(Socket clientSocket, URI filePath, String fileType, String header) throws IOException {
         System.out.println("--------------jpg ICO-------------------");
         OutputStream out = clientSocket.getOutputStream();
@@ -161,6 +169,14 @@ public class HttpServer {
         clientSocket.close();
     }
 
+    /**
+     * Método que lee archivos y los envía al cliente
+     * @param clientSocket Es el socket de la sesión
+     * @param filePath Es el path del archivo
+     * @param fileType Es el tipo del archivo ej. html, js, css
+     * @param header Es el encabezado de la petición http
+     * @throws IOException se lanza cuando no encuentra el archivo o no puede establecer la conexión
+     */
     public static void sendResponseText(Socket clientSocket, URI filePath, String fileType, String header) throws IOException {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         String outputLine;
@@ -184,6 +200,11 @@ public class HttpServer {
         clientSocket.close();
     }
 
+    /**
+     * Retorna el tipo del archivo
+     * @param path dirección original del archivo
+     * @return extensión del archivo
+     */
     private static String getFileType(URI path) {
         String fileFormat = "";
         try {
@@ -192,60 +213,5 @@ public class HttpServer {
         }
         return fileFormat;
     }
-
-
-    public static String httpResponse(URI uriResquest) throws IOException {
-        String outputLine = "";
-        Boolean isImg = false;
-        if (uriResquest.getPath().contains("html")){
-            System.out.println("--------------HTML-------------------");
-            outputLine = "Content-Type:text/html\r\n"
-                    + "\r\n";
-        } else if (uriResquest.getPath().contains("css")) {
-            System.out.println("--------------CSS-------------------");
-            outputLine = "Content-Type:text/css\r\n"
-                    + "\r\n";
-        } else if (uriResquest.getPath().contains("js")){
-            System.out.println("--------------JS-------------------");
-            outputLine ="Content-Type:text/js\r\n"
-                    + "\r\n";
-        } else if (uriResquest.getPath().contains("jpg") || uriResquest.getPath().contains("ico")) {
-            System.out.println("--------------jpg ICO-------------------"+uriResquest.getPath().split("\\.")[1]);
-            outputLine ="Content-Type:image/"+uriResquest.getPath().split("\\.")[1]+"\r\n"
-                    + "\r\n";
-            isImg = true;
-        }
-
-        //Path file = Paths.get("target/classes/public" + uriResquest.getPath());
-        Path file = Paths.get("src/main/resources/public" + uriResquest.getPath());
-
-
-
-        String line = null;
-
-
-        if (isImg){
-            BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + file));
-            String fileType = uriResquest.getPath().split("\\.")[1];
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ImageIO.write(img, fileType, byteArrayOutputStream);
-
-            byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
-
-
-        }else {
-
-            Charset charset = StandardCharsets.UTF_8;
-            BufferedReader reader = Files.newBufferedReader(file, charset);
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                outputLine += line;
-            }
-        }
-
-        return outputLine;
-
-    }
-
 
 }
