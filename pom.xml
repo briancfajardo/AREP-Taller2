@@ -21,7 +21,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>org.arep.taller1.webclient.HttpServer</mainClass>
+          <mainClass>org.arep.taller2.webclient.HttpServer</mainClass>
         </configuration>
       </plugin>
     </plugins>

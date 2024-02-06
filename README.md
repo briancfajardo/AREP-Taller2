@@ -1,4 +1,4 @@
-# Taller 1 AREP - Brian Camilo Fajardo Sanchez
+# Taller 2 AREP - Brian Camilo Fajardo Sanchez
 
 Este proyecto consiste en el desarrollo de un servidor web que se encarga de buscar películas por medio de peticiones a 
 una API externa 
@@ -36,7 +36,7 @@ mvn exec:java
 ```
 
 Una vez que el proyecto se encuentre corriendo correctamente y en el terminal aparezca el mensaje de "Listo para recibir..." 
-ingresa desde tu navegador predilecto a la dirección http://localhost:35000. Al ingresar verás en el medio de la pantalla 
+ingresa desde tu navegador predilecto a la dirección http://localhost:35000/index.html. Al ingresar verás en el medio de la pantalla 
 un cuadro de búsqueda en el que podrás escribir el nombre de la película que deseas buscar.
 
 Nota, una vez escribas el nombre de la película, para realizar la búsqueda puedes darle a la tecla enter o en el botón "Search".

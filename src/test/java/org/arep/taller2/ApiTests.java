@@ -1,8 +1,8 @@
-package org.arep.taller1;
+package org.arep.taller2;
 
 import org.testng.annotations.Test;
-import org.arep.taller1.api.Cache;
-import org.arep.taller1.api.HttpConnection;
+import org.arep.taller2.api.Cache;
+import org.arep.taller2.api.HttpConnection;
 
 import java.util.*;
 import java.io.*;

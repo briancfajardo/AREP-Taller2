@@ -1,6 +1,6 @@
-package org.arep.taller1;
+package org.arep.taller2;
 
-import org.arep.taller1.api.HttpConnection;
+import org.arep.taller2.api.HttpConnection;
 
 import java.io.IOException;
 

@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Movie searcher</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="camera.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<p id="title">Movie searcher</p>
+<div id="search-input">
+    <form id="movieForm" action="/movie">
+        <label for="name">Name of the movie:</label><br>
+        <input type="text" id="name" name="name" value=""><br><br>
+        <input type="button" id="toggle-button" value="Search" onclick="loadGetMsg();">
+    </form>
+</div>
+<div id="getrespmsg"></div>
+<script src="app.js"></script>
+</body>
+</html>
