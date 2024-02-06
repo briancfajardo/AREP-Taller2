@@ -1,7 +1,7 @@
 # Taller 2 AREP - Brian Camilo Fajardo Sanchez
 
-Este proyecto consiste en el desarrollo de un servidor web que se encarga de buscar películas por medio de peticiones a 
-una API externa 
+Este proyecto consiste en la ampliación de funcionalidades del taller anterior, en donde ahora se cuenta con una interfaz
+más amigable al usuario, con estilos, una estructura definida e imágenes.
 
 ## Iniciando
 
@@ -26,7 +26,7 @@ Para poder realizar una copiar del proyecto, primero debes dirigirte al director
 abrir un terminal para escribir el siguiente comando:
 
 ```
-git clone https://github.com/briancfajardo/AREP-Taller1.git
+git clone https://github.com/briancfajardo/AREP-Taller2.git
 ```
 
 Luego, ingresa al directorio del proyecto desde el terminar y ejecuta el siguiente comando para correr el proyecto 
@@ -37,11 +37,13 @@ mvn exec:java
 
 Una vez que el proyecto se encuentre corriendo correctamente y en el terminal aparezca el mensaje de "Listo para recibir..." 
 ingresa desde tu navegador predilecto a la dirección http://localhost:35000/index.html. Al ingresar verás en el medio de la pantalla 
-un cuadro de búsqueda en el que podrás escribir el nombre de la película que deseas buscar.
+un cuadro de búsqueda en el que podrás escribir el nombre de la película que deseas buscar. Además, se evidencia el uso de imágenes
+tanto en el icono de la página como en el fondo.
 
 Nota, una vez escribas el nombre de la película, para realizar la búsqueda puedes darle a la tecla enter o en el botón "Search".
 
-<img width="1680" alt="Ejemplo de búsqueda" src="ejemploBusqueda.png">
+<img width="1680" alt="Ejemplo de búsqueda" src="CapPantalla1.png">
+<img width="1680" alt="Ejemplo de búsqueda" src="CapPantalla2.png">
 
 ## Corriendo los tests
 
@@ -55,6 +57,17 @@ mvn test
 Ahora, el proyecto tiene 2 tests, el primero es una prueba donde vemos que la API que creamos si sea capaz de traer 
 información correcta dado el título de una película, y el segundo prueba que nuestra app sea resistente a pedidos 
 concurrentes, chequeando que el caché se mantenga consistente a través de estos pedidos.
+
+### Test de integración
+
+La única forma de verificar que las nuevas funcionalidades funcionan correctamente es ejecutar el proyecto en su conjunto. 
+Esto permitirá observar cómo interactúan las nuevas funcionalidades con el resto del código y si se obtienen los resultados esperados.
+
+Para asegurar el correcto funcionamiento de la aplicación solo debemos entrar al servidor desde el navegador (http://localhost:35000/index.html)
+y validar que la página funcione como se espera, es decir, que carguen la imágen de fondo, el icono de la página, además que tenga
+estilos. También probar que funcione correctamente la búsqueda de películas y que en esta nueva versión se separó el js que 
+originalmente estaba en el mismo html y que ahora está en un archivo independiente. 
+
 
 ## Documentacion
 
@@ -118,7 +131,7 @@ En la aplicación cada clase tiene una función en específica.
 
 * HttpServer es el componente designado como Cliente Web, encargado de gestionar los Sockets, procesar las solicitudes recibidas y, en función de estas, proporcionar la respuesta adecuada al navegador.
 * ConnectionHttp es la clase principal de la fachada, desempeñando la responsabilidad de realizar las peticiones a la API externa y transformar la respuesta en un objeto más fácilmente manejable por el cliente web.
-  Cache es la clase designada para simular un caché dentro de la fachada. Su función principal es la de almacenar y recuperar información sobre películas. Además, se encarga de verificar si una película ya ha sido buscada previamente.
+* Cache es la clase designada para simular un caché dentro de la fachada. Su función principal es la de almacenar y recuperar información sobre películas. Además, se encarga de verificar si una película ya ha sido buscada previamente.
   
 ## Agradecimientos
 
